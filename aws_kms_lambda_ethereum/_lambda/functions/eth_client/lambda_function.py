@@ -61,6 +61,15 @@ def lambda_handler(event, context):
         # nonce from send request
         nonce = event.get('nonce')
 
+        # get data from send request
+        data = event.get('data')
+
+        # get gas from send request
+        gas = event.get('gas')
+
+        # get gasPrice from send request
+        gasPrice = event.get('gasPrice')
+
         # download public key from KMS
         pub_key = get_kms_public_key(key_id)
 
@@ -70,7 +79,11 @@ def lambda_handler(event, context):
         # collect raw parameters for Ethereum transaction
         tx_params = get_tx_params(dst_eth_addr=dst_address,
                                   amount=amount,
-                                  nonce=nonce)
+                                  nonce=nonce,
+                                  data=data,
+                                  gas=gas,
+                                  gasPrice=gasPrice
+                                  )
 
         # assemble Ethereum transaction and sign it offline
         raw_tx_signed = assemble_tx(tx_params=tx_params,

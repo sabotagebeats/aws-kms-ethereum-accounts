@@ -1,5 +1,15 @@
 # AWS-KMS-Ethereum-Accounts
 
+todo: 
+accounts provider plugin
+needs to be installable by click / python
+get rid of javascript and docker requirements
+	*rewrite as deployment package or use ECR?
+	*replace javascript packages - cdk?
+alias commands through click
+	-get ethereum address
+	-sign transaction
+
 This project represents an example implementation of an AWS customer master key (CMK) based Ethereum account.  
 It's implemented in AWS Cloud Development Kit (CDK) and Python.
 

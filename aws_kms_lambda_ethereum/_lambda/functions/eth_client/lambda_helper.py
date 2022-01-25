@@ -147,14 +147,14 @@ def get_recovery_id(msg_hash, r, s, eth_checksum_addr) -> dict:
     return {}
 
 
-def get_tx_params(dst_eth_addr: str, amount: int, nonce: int) -> dict:
+def get_tx_params(dst_eth_addr: str, amount: int, nonce: int, data: bytes, gas: int, gasPrice: bytes) -> dict:
     transaction = {
         'nonce': nonce,
         'to': dst_eth_addr,
         'value': w3.toWei(amount, 'ether'),
-        'data': '0x00',
-        'gas': 160000,
-        'gasPrice': '0x0918400000'
+        'data': data,
+        'gas': gas,
+        'gasPrice': gasPrice
     }
 
     return transaction
@@ -166,6 +166,8 @@ def assemble_tx(tx_params: dict, params: EthKmsParams, eth_checksum_addr: str) -
 
     tx_sig = find_eth_signature(params=params,
                                 plaintext=tx_hash)
+    
+    return tx_sig
 
     tx_eth_recovered_pub_addr = get_recovery_id(msg_hash=tx_hash,
                                                 r=tx_sig['r'],
