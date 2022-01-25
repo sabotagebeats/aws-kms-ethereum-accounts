@@ -166,6 +166,8 @@ def assemble_tx(tx_params: dict, params: EthKmsParams, eth_checksum_addr: str) -
 
     tx_sig = find_eth_signature(params=params,
                                 plaintext=tx_hash)
+    
+    return tx_sig
 
     tx_eth_recovered_pub_addr = get_recovery_id(msg_hash=tx_hash,
                                                 r=tx_sig['r'],
