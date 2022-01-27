@@ -1,0 +1,9 @@
+{
+    "operation": "sign",
+    "amount": 1,
+    "dst_address": "",
+    "nonce": 1,
+    "data": "0x000",
+    "gas": 160000,
+    "gasPrice": "0x0918400000"
+}
