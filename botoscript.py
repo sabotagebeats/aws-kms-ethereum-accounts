@@ -3,11 +3,15 @@ import json
 
 lambda_client = boto3.client('lambda')
 
-input = open('input.json')
-
-test_event = json.load(input)
-
-input.close()
+test_event = {
+    "operation": "sign",
+    "amount": 1,
+    "dst_address": "",
+    "nonce": 1,
+    "data": "0x000",
+    "gas": 160000,
+    "gasPrice": "0x0918400000"
+}
 
 functions = lambda_client.list_functions()
 
